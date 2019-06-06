@@ -1,9 +1,16 @@
 ## Fork from the original DrImpute on Github.
 
-The original code is not usable in R 3.6.0. I tried to use this modified one here using a own grouping and imputing data, but this does seam to be quite functionallity. In ist center is what you brain can do, too. If you see that in one group you have quite some genes expressed, but on a low level and with many dropouts - just assume you have a constant low expression in this group.
+The original code is not usable in R 3.6.0. I tried to use this modified one here which at least exports the preprocess function (!).
+Using my own data and own grouping I could if I load the module via devtools::document() start the 'imp0clC' function directly and obtain imputed data, but the function is still not exported if you load the package vir library(). 
+
+In ist center the imputed data is what you brain can/could do, too. If you see that in one group you have quite some genes expressed, but on a low level and with many dropouts - just assume you have a constant low expression in this group.
 The tool does also not change already detected expression values.
 
-All in all nothing I would use at the moment. But I have only invested a halv day into trying. The level of R code I got here did not convince me either. I will check in more detail later and update this quite harsh beakdown.
+All in all nothing I would use at the moment. 
+But I have only invested half a day into trying. 
+The level of R code I got here did not convince me either. 
+I plann to check in more detail later and update this quite harsh beakdown of DrImpute on R code level.
+Maybe I even get it to work for me ;-)
 
 
 ## DrImpute: Imputing dropout events in single cell RNA sequencing data
