@@ -1,3 +1,11 @@
+## Fork from the original DrImpute on Github.
+
+The original code is not usable in R 3.6.0. I tried to use this modified one here using a own grouping and imputing data, but this does seam to be quite functionallity. In ist center is what you brain can do, too. If you see that in one group you have quite some genes expressed, but on a low level and with many dropouts - just assume you have a constant low expression in this group.
+The tool does also not change already detected expression values.
+
+All in all nothing I would use at the moment. But I have only invested a halv day into trying. The level of R code I got here did not convince me either. I will check in more detail later and update this quite harsh beakdown.
+
+
 ## DrImpute: Imputing dropout events in single cell RNA sequencing data
 
 Wuming Gong (<gongx030@umn.edu>) and Il-Youp Kwak (<ilyoup.kwak@gmail.com>).
