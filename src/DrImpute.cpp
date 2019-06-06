@@ -5,8 +5,18 @@ using namespace Rcpp;
 using namespace arma;
 
 // [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::export()]]
-arma::mat imp0clC (const arma::mat X, arma::mat cls) {
+
+// [[Rcpp::interfaces(r, cpp)]]
+
+//' @title imp0clC c++ implementation to impute the zeros
+//' @aliases imp0clC,DrImpute-method
+//' @rdname imp0clC
+//' @description impute the zeros in a single cell dataset based on a matrix and a grouping information
+//' @param X the matrix of data
+//' @param cls the grouping information
+//' @return a matrix of expression values
+// [[Rcpp::export]]
+arma::mat imp0clC (const arma::mat X, arma::mat cls ) {
   const int n_gene = X.n_rows;
   const int n_cell = X.n_cols;
   const int n_cls = cls.n_rows;
@@ -122,4 +132,5 @@ arma::mat imp0clC2 (const arma::mat X, arma::mat cls) {
             
   return(tpX / n_cls);
 }
+CXX_STD = CXX14
 

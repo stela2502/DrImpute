@@ -33,6 +33,7 @@ NULL
 #' X <- preprocess(X, min.expressed.gene = 0)
 #'
 #' @seealso \code{\link{DrImpute}}
+#' @export
 preprocess <- function(x, min.expressed.gene = 0, min.expressed.cell = 2, max.expressed.ratio = 1, normalize.by.size.effect = FALSE){
 
 	if (class(x) == 'SummarizedExperiment')
@@ -98,6 +99,7 @@ preprocess <- function(x, min.expressed.gene = 0, min.expressed.cell = 2, max.ex
 #' set.seed(1)
 #' X.imp <- DrImpute(X.log)
 #' 
+#' @export
 DrImpute <- function(X, ks = 10:15, dists = c('spearman', 'pearson'), batch.size = NA, mc.cores = 1){
 
 	N <- nrow(X)	# number of genes
@@ -199,6 +201,7 @@ estimate.expression <- function(X, ks = 10:15, dists = c('spearman', 'pearson'),
 #' @references
 #' Wuming Gong, Il-Youp Kwak, Pruthvi Pota, Kaoko Koyano-Nakagawa and Daniel J. Garry (2017+)
 #' DrImpute: Imputing dropout eveents in single cell RNA sequencing data
+#' @export
 pca.dist.matrix <- function(X, k, dist.method = 'spearman', mc.cores = 1, batch.size = NA){
 
 	M <- ncol(X)	# number of cells
@@ -255,6 +258,7 @@ pca.dist.matrix <- function(X, k, dist.method = 'spearman', mc.cores = 1, batch.
 #' @references
 #' Wuming Gong, Il-Youp Kwak, Pruthvi Pota, Kaoko Koyano-Nakagawa and Daniel J. Garry (2017+)
 #' DrImpute: Imputing dropout eveents in single cell RNA sequencing data
+#' @export
 dist2 <- function(X, method){
 	if (method == 'spearman')
 		D <- as.matrix(1 - cor(as.matrix(X), method = 'spearman'))
@@ -282,6 +286,7 @@ dist2 <- function(X, method){
 #' @references
 #' Wuming Gong, Il-Youp Kwak, Pruthvi Pota, Kaoko Koyano-Nakagawa and Daniel J. Garry (2017+)
 #' DrImpute: Imputing dropout eveents in single cell RNA sequencing data
+#' @export
 prcomp2 <- function(X, n = NA, ...){
 	if (is.na(n) || n > min(dim(X)) * 0.3){
 		pr <- prcomp(X, ...)
@@ -309,6 +314,7 @@ prcomp2 <- function(X, n = NA, ...){
 #' D. Schully (2010) 
 #' Web-scale k-means clustering
 #'
+#' @export
 kmeans2 <- function(x, centers, batch.size = 10000, iter.max = 1e+09){
 
 	M <- nrow(x) # number of samples
@@ -347,6 +353,7 @@ kmeans2 <- function(x, centers, batch.size = 10000, iter.max = 1e+09){
 #' Computing y[i, j] = exp(x[i, j]) / sum(exp(x[, j]))
 #'
 #' @param x An input matrix
+#' @export
 softmax <- function(x){
 	x.max <- apply(x, 2, max)
 	y <- log(Matrix::rowSums(exp(t(x) - x.max)) + .Machine$double.eps) + x.max	# log(sum(exp(x[, j])))
